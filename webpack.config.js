@@ -1,8 +1,11 @@
-let path = require('path');
+const path = require('path');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
-let config = {
+const isDev = process.env.NODE_ENV !== 'production';
+
+const config = {
     entry: './app/resources/js/main.js',
-    output:{
+    output: {
         path: path.resolve(__dirname, 'app/public/static/js'),
         publicPath: 'app/public/static/js/',
         filename: 'bundle.js'
@@ -25,9 +28,24 @@ let config = {
                         ]
                     }
                 }
-            }
+            },
+            {
+                test: /\.s[ac]ss$/i,
+                use: [
+                    isDev ?
+                        'style-loader' :
+                        MiniCssExtractPlugin.loader,
+                    'css-loader',
+                    'sass-loader',
+                ],
+            },
         ]
-    }
+    },
+    plugins: [
+        new MiniCssExtractPlugin({
+            filename: '../css/style.css'
+        }),
+    ],
 };
 
 module.exports = config;
