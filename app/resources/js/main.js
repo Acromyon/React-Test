@@ -1,4 +1,4 @@
-// import 'materialize-css';
+import 'materialize-css';
 // import { Button, Card, Row, Col } from 'react-materialize';
 
 import '../scss/common.scss';

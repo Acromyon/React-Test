@@ -1,0 +1,12 @@
+.count-clicker__widget {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+}
+
+.count-clicker__description {
+    flex-basis: 100%;
+    margin-bottom: 10px;
+}
