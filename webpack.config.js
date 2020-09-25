@@ -46,6 +46,9 @@ const config = {
             filename: '../css/style.css'
         }),
     ],
+    resolve: {
+        extensions: ['.js', '.jsx']
+    },
 };
 
 module.exports = config;
