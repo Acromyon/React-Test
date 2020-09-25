@@ -2,9 +2,11 @@ import React from 'react';
 
 export default () => {
     return (
-        <footer className="footer">
-            <div className="container">
-                <span className="footer__author">made in 2020, Denis Domrachev by.</span>
+        <footer className="footer teal accent-1">
+            <div className="footer-copyright">
+                <div className="container">
+                    @ 2020, by Denis Domrachev
+                </div>
             </div>
         </footer>
     );

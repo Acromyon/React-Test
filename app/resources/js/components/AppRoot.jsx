@@ -7,8 +7,10 @@ import AppFooter from './footer/AppFooter';
 export default () => {
     return (
         <React.Fragment>
-            <AppHeader/>
-            <AppContent/>
+            <div className="wrapper teal lighten-5">
+                <AppHeader/>
+                <AppContent/>
+            </div>
             <AppFooter/>
         </React.Fragment>
     );

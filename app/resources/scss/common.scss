@@ -1,3 +1,8 @@
-@import 'global/reset';
+@import "global/reset";
 
-@import '~materialize-css';
+@import "~materialize-css";
+
+@import "global/layout_structure";
+@import "components/header";
+@import "components/content/count_clicker";
+@import "components/footer";
