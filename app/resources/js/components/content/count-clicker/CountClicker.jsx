@@ -1,7 +1,8 @@
 import React, {useState} from 'react';
+import PropTypes from 'prop-types';
 
-export default (props) => {
-    const [count, setCount] = useState(props.startValue || 0);
+export default function CountClicker(props) {
+    const [count, setCount] = useState(props.startValue);
     
     let increaseCount = () => {
         if (!props.hasOwnProperty('maxValue') || count < props.maxValue) {
@@ -9,7 +10,7 @@ export default (props) => {
         }
     };
     
-    let reduceCount = () => {
+    let decreaseCount = () => {
         if (!props.hasOwnProperty('minValue') || count > props.minValue) {
             setCount(count - 1);
         }
@@ -22,7 +23,7 @@ export default (props) => {
             </p>
             <button
                 className="btn-floating waves-effect waves-light teal"
-                onClick={reduceCount}>
+                onClick={decreaseCount}>
                 <i className="material-icons">remove</i>
             </button>
             <span className="count">
@@ -36,3 +37,13 @@ export default (props) => {
         </div>
     );
 }
+
+CountClicker.propTypes = {
+    startValue: PropTypes.number,
+    minValue: PropTypes.number,
+    maxValue: PropTypes.number,
+};
+
+CountClicker.defaultProps  = {
+    startValue: 0,
+};

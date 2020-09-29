@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default () => {
+export default function AppHeader() {
     return (
         <header className="header">
             <nav className="teal">
@@ -11,8 +11,8 @@ export default () => {
                         <ul id="nav-mobile"
                             className="left hide-on-med-and-down">
                             <li><a href="#">CountClicker</a></li>
-                            <li><a href="#">Components</a></li>
-                            <li><a href="#">JavaScript</a></li>
+                            <li><a href="#">TotalCount</a></li>
+                            <li><a href="#">NextLesson</a></li>
                         </ul>
                     </div>
                 </div>

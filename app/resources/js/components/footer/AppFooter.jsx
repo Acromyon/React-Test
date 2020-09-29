@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default () => {
+export default function AppFooter() {
     return (
         <footer className="footer teal accent-1">
             <div className="footer-copyright">
