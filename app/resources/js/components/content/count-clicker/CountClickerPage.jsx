@@ -3,59 +3,65 @@ import React, {useState} from 'react';
 import CountClicker from './CountClicker';
 import CountClickerTotal from './CountClickerTotal';
 
-export default function AppContent() {
-    let products = [
-        {
-            id: 1,
-            name: 'iPhone',
-            price: 200,
-            count: 1,
-            rest: 3,
-        },
-        {
-            id: 2,
-            name: 'Samsung',
-            price: 180,
-            count: 1,
-            rest: 10,
-        },
-        {
-            id: 3,
-            name: 'Huawei',
-            price: 135,
-            count: 2,
-            rest: 12,
-        },
-    ];
+export default function CountClickerPage() {
+    let initState = {
+        products: [
+            {
+                id: 1,
+                name: 'iPhone',
+                price: 200,
+                count: 1,
+                rest: 3,
+            },
+            {
+                id: 2,
+                name: 'Samsung',
+                price: 180,
+                count: 1,
+                rest: 10,
+            },
+            {
+                id: 3,
+                name: 'Huawei',
+                price: 135,
+                count: 2,
+                rest: 12,
+            },
+        ],
+    };
     
-    let calcTotal = (allProducts) => {
-        return allProducts.reduce((acc, item) => {
+    function calcTotal(whoCalls) {
+        let initVal = {
+            price: 0,
+            count: 0,
+        };
+        
+        console.log(this, whoCalls);
+        
+        return this.products.reduce((acc, item) => {
+            
             acc.price += item.count * item.price;
             acc.count += item.count;
             
             console.log(acc);
+            
             return acc;
-        }, {
-            price: 0,
-            count: 0,
-        });
-    };
+        }, initVal);
+    }
     
-    const [productsState, setProductsState] = useState(products);
-    const [totalState, setTotalState] = useState(calcTotal(productsState));
+    initState.total = calcTotal.call(initState, 'initState');
+    const [state, setState] = useState(initState);
     
     let changeProductCount = (newCount, i) => {
-        let newProductsState = [...productsState];
-        let newProduct = {...newProductsState[i]};
+        let newState = {products: [...state.products]};
+        newState.products[i] = {...newState.products[i], count: newCount};
+    
+        newState.total = calcTotal.call(newState, 'newState');
         
-        newProduct.count = newCount;
-        newProductsState[i] = newProduct;
-        
-        setProductsState(newProductsState);
-        setTotalState(calcTotal(productsState));
+        setState(newState);
     };
     
-    let productsList = productsState.map((product, i) => {
+    let productsList = state.products.map((product, i) => {
         return (
             <div className="col s12 m6 l4 xl3"
                  key={product.id}>
@@ -76,8 +82,8 @@ export default function AppContent() {
                 {productsList}
             </div>
             <CountClickerTotal
-                totalPrice={totalState.price}
-                totalCount={totalState.count}
+                totalPrice={state.total.price}
+                totalCount={state.total.count}
             />
         </React.Fragment>
     );
