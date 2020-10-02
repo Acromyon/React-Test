@@ -1,18 +1,18 @@
-.count-clicker__widget,
-.count-clicker__widget-total {
+.widget,
+.widget-total {
     padding: 10px 15px;
 }
 
-.count-clicker__price {
+.price {
     font-size: 0.85em;
     font-weight: 200;
 }
 
-.count-clicker__description {
+.description {
     margin-bottom: 10px;
 }
 
-.count-clicker__controls {
+.controls {
     flex-basis: 100%;
     display: flex;
     flex-wrap: wrap;
@@ -20,6 +20,10 @@
     align-items: center;
 }
 
-.count-clicker__sum-price {
+.count {
+    font-size: 22px;
+}
+
+.sum-price {
     margin-top: 15px;
 }

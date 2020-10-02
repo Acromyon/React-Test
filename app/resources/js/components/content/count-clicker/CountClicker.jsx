@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import style from './style.module.scss';
+
 export default function CountClicker(props) {
     let increaseCount = () => {
         if (!props.hasOwnProperty('maxCount') || props.currentCount < props.maxCount) {
@@ -15,23 +17,23 @@ export default function CountClicker(props) {
     };
     
     return (
-        <div className="count-clicker__widget card teal lighten-3">
+        <div className={`${style.widget} card teal lighten-3`}>
             <h5>
-                {props.name} <span className="count-clicker__price"> - (${props.price})</span>
+                {props.name} <span className={style.price}> - (${props.price})</span>
             </h5>
-            <p className="count-clicker__description">
+            <p className={style.description}>
                 Available {props.maxCount ?? '\u221E'} units
             </p>
             
-            <div className="count-clicker__controls">
+            <div className={style.controls}>
                 <button
                     className="btn-floating waves-effect waves-light teal"
                     onClick={decreaseCount}>
                     <i className="material-icons">remove</i>
                 </button>
-                <span className="count">
-                {props.currentCount}
-            </span>
+                <span className={style.count}>
+                    {props.currentCount}
+                </span>
                 <button
                     className="btn-floating waves-effect waves-light teal"
                     onClick={increaseCount}>
@@ -39,7 +41,7 @@ export default function CountClicker(props) {
                 </button>
             </div>
             
-            <h6 className="count-clicker__sum-price">
+            <h6 className={style.sumPrice}>
                 ${props.currentCount * props.price}
             </h6>
         </div>

@@ -2,7 +2,6 @@
 
 @import "~materialize-css";
 
-@import "global/layout_structure";
-@import "components/header";
-@import "components/content/count_clicker";
-@import "components/footer";
+@import "layout/structure";
+@import "layout/header";
+@import "layout/footer";
