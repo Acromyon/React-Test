@@ -7,10 +7,10 @@ export default function CountClickerTotal(props) {
             <div className="col s12">
                 <div className="count-clicker__widget-total card teal lighten-3">
                     <h6>
-                        Total count is {props.totalCount}
+                        Total count is {props.total.count}
                     </h6>
                     <h5>
-                        ${props.totalPrice}
+                        ${props.total.price}
                     </h5>
                 </div>
             </div>
@@ -19,6 +19,5 @@ export default function CountClickerTotal(props) {
 }
 
 CountClickerTotal.propTypes = {
-    totalCount: PropTypes.number,
-    totalPrice: PropTypes.number,
+    total: PropTypes.object,
 };

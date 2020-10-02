@@ -30,35 +30,27 @@ export default function CountClickerPage() {
         ],
     };
     
-    function calcTotal(whoCalls) {
-        let initVal = {
-            price: 0,
-            count: 0,
-        };
-        
-        console.log(this, whoCalls);
-        
-        return this.products.reduce((acc, item) => {
-            
-            acc.price += item.count * item.price;
-            acc.count += item.count;
-            
-            console.log(acc);
-            
-            return acc;
-        }, initVal);
-    }
-    
-    initState.total = calcTotal.call(initState, 'initState');
     const [state, setState] = useState(initState);
     
     let changeProductCount = (newCount, i) => {
         let newState = {products: [...state.products]};
         newState.products[i] = {...newState.products[i], count: newCount};
-    
-        newState.total = calcTotal.call(newState, 'newState');
         
         setState(newState);
+    };
+    
+    let calcTotal = () => {
+        let initVal = {
+            price: 0,
+            count: 0,
+        };
+        
+        return state.products.reduce((acc, item) => {
+            acc.price += item.count * item.price;
+            acc.count += item.count;
+            
+            return acc;
+        }, initVal);
     };
     
     let productsList = state.products.map((product, i) => {
@@ -82,8 +74,7 @@ export default function CountClickerPage() {
                 {productsList}
             </div>
             <CountClickerTotal
-                totalPrice={state.total.price}
-                totalCount={state.total.count}
+                total={calcTotal()}
             />
         </React.Fragment>
     );
