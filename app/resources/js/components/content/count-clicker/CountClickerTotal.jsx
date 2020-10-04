@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import style from './style.module.scss';
 
-export default function CountClickerTotal(props) {
+function CountClickerTotal(props) {
     return (
         <div className="row">
             <div className="col s12">
@@ -21,5 +21,7 @@ export default function CountClickerTotal(props) {
 }
 
 CountClickerTotal.propTypes = {
-    total: PropTypes.object,
+    total: PropTypes.objectOf(PropTypes.number),
 };
+
+export default CountClickerTotal;

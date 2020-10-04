@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import style from './style.module.scss';
 
-export default function CountClicker(props) {
+function CountClicker(props) {
     let increaseCount = () => {
         if (!props.hasOwnProperty('maxCount') || props.currentCount < props.maxCount) {
             props.changeCount(props.currentCount + 1);
@@ -60,3 +60,5 @@ CountClicker.defaultProps  = {
     currentCount: 1,
     minCount: 1,
 };
+
+export default CountClicker;
